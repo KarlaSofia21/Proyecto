@@ -1,4 +1,3 @@
-// app/api/login/route.ts
 import { NextResponse } from 'next/server';
 import pool from '@/app/lib/db';
 
@@ -19,7 +18,7 @@ export async function POST(request: Request) {
 
     const usuario = result.rows[0];
 
-    // Por ahora comparamos texto plano (luego lo haremos con bcrypt)
+
     if (usuario.password === password) {
       return NextResponse.json({ success: true, message: 'Inicio de sesión exitoso' });
     } else {
