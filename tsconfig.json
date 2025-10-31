@@ -18,8 +18,10 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",           // ← MANTENER
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"],
+      "@/app/*": ["./app/*"]
     }
   },
   "include": [
