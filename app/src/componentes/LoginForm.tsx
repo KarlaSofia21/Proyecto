@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,6 +19,13 @@ export default function LoginForm() {
 
     const data = await res.json();
     setMensaje(data.message);
+
+     if (data.success) {
+       localStorage.setItem("usuarioCorreo", correo);
+      setTimeout(() => {
+        router.push("/dashboard"); 
+      }, 1000); 
+    }
   };
 
   return (
