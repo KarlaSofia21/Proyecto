@@ -83,6 +83,15 @@ export default function LoginForm() {
           ¿Olvidaste tu contraseña?
         </a>
       </div>
+
+      <div className="mt-4 text-sm text-gray-700">
+        <a
+          href="/pin-login"
+          className="text-rose-600 font-semibold hover:underline"
+        >
+          Iniciar sesión con PIN
+        </a>
+      </div>
     </div>
   );
 }
