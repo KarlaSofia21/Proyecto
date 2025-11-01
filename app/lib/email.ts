@@ -15,9 +15,9 @@ export async function sendMagicLink(correo: string, enlace: string) {
   console.log('Enlace:', enlace);
 
   const mailOptions = {
-    from: `"UTHH Acceso" <${process.env.EMAIL_USER}>`,
+    from: `"Acceso" <${process.env.EMAIL_USER}>`,
     to: correo,
-    subject: 'Tu enlace de acceso - UTHH (Expira en 15 min)',
+    subject: 'Tu enlace de acceso (Expira en 15 min)',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 12px; background: #fdf2f8; text-align: center;">
         <h2 style="color: #ec4899;">Acceso con un clic</h2>

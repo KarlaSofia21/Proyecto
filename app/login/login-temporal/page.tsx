@@ -51,8 +51,8 @@ export default function LoginTemporalPage() {
               value={correo}
               onChange={(e) => setCorreo(e.target.value)}
               required
-              className="w-full px-4 py-3 rounded-full border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400 placeholder-pink-400"
-              placeholder="tu@uthh.edu.mx"
+              className="w-full px-4 py-3 rounded-full border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400 placeholder-pink-400 text-black"
+              placeholder="tucorreo@com"
             />
           </div>
 
