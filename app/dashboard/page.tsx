@@ -194,4 +194,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-// Ya no hay '}' extra aquí

@@ -1,5 +1,4 @@
-// app/login/login-temporal/verify/page.tsx  <--- ¡ARCHIVO ORIGINAL MODIFICADO!
-
+// app/login/login-temporal/verify/page.tsx
 import { Suspense } from 'react';
 import VerifyComponent from './VerifyComponent'; // <-- Importa tu nuevo componente
 
