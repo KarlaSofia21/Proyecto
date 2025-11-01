@@ -9,27 +9,30 @@ export default function DashboardPage() {
   const [mensaje, setMensaje] = useState<{ text: string; type: "success" | "error" } | null>(null);
   const router = useRouter();
 
+  // Estados para el formulario de tarjeta
   const [titular, setTitular] = useState("");
   const [numero, setNumero] = useState("");
   const [expiracion, setExpiracion] = useState("");
   const [cvv, setCvv] = useState("");
 
- useEffect(() => {
-  const correo = localStorage.getItem("usuarioCorreo");
-  const id = localStorage.getItem("usuarioId");
+  // Solo un useEffect para comprobar la sesión
+  useEffect(() => {
+    const correo = localStorage.getItem("usuarioCorreo");
+    const id = localStorage.getItem("usuarioId");
 
-  if (!correo || !id) {
-    router.push("/login/login-temporal"); // o "/login" si quieres el form
-  } else {
-    setCorreoUsuario(correo);
-    setUsuarioId(Number(id));
-  }
-}, [router]);
+    if (!correo || !id) {
+      router.push("/login/login-temporal"); // o "/login" si quieres el form
+    } else {
+      setCorreoUsuario(correo);
+      setUsuarioId(Number(id));
+    }
+  }, [router]);
 
   const handleLogout = () => {
     localStorage.removeItem("usuarioCorreo");
     localStorage.removeItem("usuarioId");
-   router.push("/login/login-temporal");
+    // Solo una redirección al salir
+    router.push("/login/login-temporal"); 
   };
 
   const formatCardNumber = (value: string) => {
@@ -96,10 +99,12 @@ export default function DashboardPage() {
     }
   };
 
+  // Muestra 'null' (nada) mientras comprueba la sesión y redirige
   if (!correoUsuario || !usuarioId) {
-    return null; // Redirigiendo...
+    return null; 
   }
 
+  // Solo hay UN return principal
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 p-6">
       <div className="max-w-2xl mx-auto">
@@ -189,3 +194,4 @@ export default function DashboardPage() {
     </div>
   );
 }
+// Ya no hay '}' extra aquí
