@@ -27,12 +27,12 @@ export default function LoginForm() {
       const data = await res.json();
 
       if (data.success) {
-        // GUARDAR EN LOCALSTORAGE (igual que el magic link)
+        // GUARDAR EN LOCALSTORAGE
         localStorage.setItem("usuarioCorreo", data.usuario.correo);
         localStorage.setItem("usuarioId", data.usuario.id.toString());
 
-        // REDIRIGIR AL DASHBOARD
-        router.push("/dashboard");
+        // REDIRIGIR A LA PÁGINA DE BIENVENIDA
+        router.push("/bienvenida");
       } else {
         setMensaje(data.message || "Error al iniciar sesión");
       }
@@ -88,24 +88,35 @@ export default function LoginForm() {
         </p>
       )}
 
-      <div className="mt-8 text-sm text-gray-700 space-y-2">
-        <div>
+      <div className="mt-8 text-sm text-gray-700 space-y-4">
+        <div className="flex justify-center space-x-2">
           <a href="/registro" className="text-rose-600 font-semibold hover:underline">
             Crear cuenta
           </a>
-          {" · "}
+          <span>·</span>
           <a href="/recuperar" className="text-rose-600 font-semibold hover:underline">
             ¿Olvidaste tu contraseña?
           </a>
         </div>
-
-        <Link
-          href="/login/login-temporal"
-          className="block mt-3 text-rose-600 font-semibold hover:underline"
-        >
-          Ingresar con enlace temporal
-        </Link>
+        <div className="border-t border-rose-200 pt-4">
+          <div className="flex justify-center gap-4">
+            <Link
+              href="/login/login-temporal"
+              className="text-rose-600 font-semibold hover:underline text-sm"
+            >
+              Ingresar con enlace temporal
+            </Link>
+            <span className="text-gray-300">|</span>
+            <Link
+              href="/login/pin"
+              className="text-rose-600 font-semibold hover:underline text-sm"
+            >
+              Iniciar sesión con PIN
+            </Link>
+          </div>
+        </div>
       </div>
+
     </div>
   );
 }
