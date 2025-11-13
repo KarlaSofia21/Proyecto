@@ -23,7 +23,7 @@ export default function DashboardPage() {
     const id = localStorage.getItem("usuarioId");
 
     if (!correo || !id) {
-      router.push("/login/login-temporal"); // o "/login" si quieres el form
+      router.push("/login");
     } else {
       setCorreoUsuario(correo);
       setUsuarioId(Number(id));
@@ -33,8 +33,7 @@ export default function DashboardPage() {
   const handleLogout = () => {
     localStorage.removeItem("usuarioCorreo");
     localStorage.removeItem("usuarioId");
-    // Solo una redirección al salir
-    router.push("/login/login-temporal"); 
+    router.push("/login"); 
   };
 
   const formatCardNumber = (value: string) => {

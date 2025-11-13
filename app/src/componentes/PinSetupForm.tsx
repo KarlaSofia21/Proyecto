@@ -56,17 +56,13 @@ export default function PinSetupForm({ correo, onPinConfigured }: PinSetupFormPr
   };
 
   return (
-    <div className="mt-8 w-full max-w-md">
-      <h2 className="text-2xl font-bold text-rose-700 mb-4 text-center">
-        Configurar PIN
-      </h2>
-      
+    <div className="w-full">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col space-y-4 bg-white/50 backdrop-blur-sm p-6 rounded-2xl shadow-lg"
+        className="flex flex-col space-y-4"
       >
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-white text-sm font-medium mb-2">
             PIN (4-6 dígitos)
           </label>
           <input
@@ -81,12 +77,12 @@ export default function PinSetupForm({ correo, onPinConfigured }: PinSetupFormPr
               setPin(value);
             }}
             required
-            className="w-full p-3 rounded-full border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400 text-gray-700 bg-white"
+            className="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-500 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-white text-sm font-medium mb-2">
             Confirmar PIN
           </label>
           <input
@@ -101,24 +97,24 @@ export default function PinSetupForm({ correo, onPinConfigured }: PinSetupFormPr
               setConfirmPin(value);
             }}
             required
-            className="w-full p-3 rounded-full border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400 text-gray-700 bg-white"
+            className="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-500 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold py-3 rounded-full shadow-lg transition-transform transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 rounded-lg shadow-lg transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
         >
           {loading ? "Configurando..." : "Configurar PIN"}
         </button>
 
         {mensaje && (
           <p
-            className={`text-center font-medium ${
+            className={`text-center text-sm font-medium ${
               mensaje.startsWith("✓")
-                ? "text-green-600"
-                : "text-red-600"
+                ? "text-green-400"
+                : "text-red-400"
             }`}
           >
             {mensaje}

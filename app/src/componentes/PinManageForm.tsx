@@ -122,15 +122,15 @@ export default function PinManageForm({ correo, onPinConfigurado, onClose }: Pin
   if (tienePin === null) {
     return (
       <div className="flex justify-center items-center p-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-4 border-rose-500"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-t-4 border-blue-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-6 max-w-md w-full">
+    <div className="bg-gray-800 rounded-2xl shadow-xl p-6 max-w-md w-full border border-gray-700">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold text-rose-700">
+        <h2 className="text-2xl font-bold text-white">
           {tienePin && modo === "verificar" 
             ? "Cambiar PIN" 
             : tienePin && modo === "configurar"
@@ -140,7 +140,7 @@ export default function PinManageForm({ correo, onPinConfigurado, onClose }: Pin
         {onClose && (
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+            className="text-gray-400 hover:text-white text-2xl font-bold transition-colors"
           >
             ×
           </button>
@@ -148,19 +148,19 @@ export default function PinManageForm({ correo, onPinConfigurado, onClose }: Pin
       </div>
 
       {tienePin && modo === "verificar" && (
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-gray-400 mb-4">
           Para cambiar tu PIN, primero ingresa tu PIN actual:
         </p>
       )}
 
       {tienePin && modo === "configurar" && (
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-gray-400 mb-4">
           PIN actual verificado. Ingresa tu nuevo PIN:
         </p>
       )}
 
       {!tienePin && (
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-gray-400 mb-4">
           Configura un PIN de 4 a 6 dígitos para poder iniciar sesión con él:
         </p>
       )}
@@ -168,7 +168,7 @@ export default function PinManageForm({ correo, onPinConfigurado, onClose }: Pin
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
         {tienePin && modo === "verificar" && (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-white mb-2">
               PIN Actual
             </label>
             <input
@@ -183,7 +183,7 @@ export default function PinManageForm({ correo, onPinConfigurado, onClose }: Pin
                 setPinActual(value);
               }}
               required
-              className="w-full p-3 rounded-full border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400 text-gray-700 bg-white"
+              className="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-500 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
         )}
@@ -191,7 +191,7 @@ export default function PinManageForm({ correo, onPinConfigurado, onClose }: Pin
         {modo === "configurar" && (
           <>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 {tienePin ? "Nuevo PIN (4-6 dígitos)" : "PIN (4-6 dígitos)"}
               </label>
               <input
@@ -206,12 +206,12 @@ export default function PinManageForm({ correo, onPinConfigurado, onClose }: Pin
                   setPin(value);
                 }}
                 required
-                className="w-full p-3 rounded-full border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400 text-gray-700 bg-white"
+                className="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-500 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Confirmar {tienePin ? "Nuevo " : ""}PIN
               </label>
               <input
@@ -226,7 +226,7 @@ export default function PinManageForm({ correo, onPinConfigurado, onClose }: Pin
                   setConfirmPin(value);
                 }}
                 required
-                className="w-full p-3 rounded-full border border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400 text-gray-700 bg-white"
+                className="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-500 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
           </>
@@ -235,7 +235,7 @@ export default function PinManageForm({ correo, onPinConfigurado, onClose }: Pin
         <button
           type="submit"
           disabled={cargando}
-          className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold py-3 rounded-full shadow-lg transition-transform transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 rounded-lg shadow-lg transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
         >
           {cargando
             ? "Procesando..."
@@ -248,10 +248,10 @@ export default function PinManageForm({ correo, onPinConfigurado, onClose }: Pin
 
         {mensaje && (
           <p
-            className={`text-center font-medium ${
+            className={`text-center text-sm font-medium ${
               mensaje.startsWith("✓")
-                ? "text-green-600"
-                : "text-red-600"
+                ? "text-green-400"
+                : "text-red-400"
             }`}
           >
             {mensaje}

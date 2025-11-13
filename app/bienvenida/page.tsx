@@ -33,40 +33,44 @@ export default function BienvenidaPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-100 via-rose-200 to-pink-300 p-6">
-      <div className="text-center mb-8">
-        <h1 className="text-5xl font-bold text-rose-800 mb-4 drop-shadow-md">
-          Bienvenida, {correoUsuario}
-        </h1>
-        <p className="text-xl font-medium text-rose-700">
-          Has iniciado sesión correctamente.
-        </p>
-        {mensajeExito && (
-          <div className="mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
-            {mensajeExito}
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-6">
+      <div className="w-full max-w-md">
+        <div className="bg-gray-800 rounded-2xl shadow-2xl p-8">
+          <div className="text-center mb-6">
+            <h1 className="text-3xl font-bold text-white mb-2">
+              Bienvenida, {correoUsuario}
+            </h1>
+            <p className="text-gray-400 text-sm">
+              Has iniciado sesión correctamente.
+            </p>
+            {mensajeExito && (
+              <div className="mt-4 bg-green-900/50 border border-green-500 text-green-400 px-4 py-2 rounded-lg text-sm">
+                {mensajeExito}
+              </div>
+            )}
           </div>
-        )}
-      </div>
 
-      <div className="flex flex-col gap-4 w-full max-w-sm">
-        <button
-          onClick={() => setMostrarPinModal(true)}
-          className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold py-4 rounded-full shadow-xl transform hover:scale-105 transition-all duration-200 text-lg"
-        >
-          Cambiar PIN
-        </button>
+          <div className="flex flex-col gap-3">
+            <button
+              onClick={() => setMostrarPinModal(true)}
+              className="bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 rounded-lg shadow-lg transform hover:scale-[1.02] transition-all duration-200"
+            >
+              Cambiar PIN
+            </button>
 
-        <button
-          onClick={handleLogout}
-          className="bg-rose-700 hover:bg-rose-800 text-white font-bold py-4 rounded-full shadow-xl transform hover:scale-105 transition-all duration-200 text-lg"
-        >
-          Cerrar sesión
-        </button>
+            <button
+              onClick={handleLogout}
+              className="bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 rounded-lg shadow-lg transform hover:scale-[1.02] transition-all duration-200"
+            >
+              Cerrar sesión
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Modal para Cambiar PIN */}
       {mostrarPinModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
           <div className="relative">
             <PinManageForm
               correo={correoUsuario}
