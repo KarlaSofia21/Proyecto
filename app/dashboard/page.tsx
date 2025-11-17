@@ -3,10 +3,20 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+import PinManageForm from "../src/componentes/PinManageForm";
+
+
 export default function DashboardPage() {
   const [correoUsuario, setCorreoUsuario] = useState<string | null>(null);
   const [usuarioId, setUsuarioId] = useState<number | null>(null);
   const [mensaje, setMensaje] = useState<{ text: string; type: "success" | "error" } | null>(null);
+
+  const [mostrarPinModal, setMostrarPinModal] = useState(false);
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> Recuperarcontra
   const router = useRouter();
 
   // Estados para el formulario de tarjeta
@@ -185,12 +195,39 @@ export default function DashboardPage() {
         </div>
 
         <button
+
+          onClick={() => setMostrarPinModal(true)}
+          className="w-full mt-6 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+        >
+          Configurar PIN
+        </button>
+
+        <button
+
           onClick={handleLogout}
           className="w-full mt-8 bg-rose-700 hover:bg-rose-800 text-white font-bold py-4 rounded-full shadow-xl transform hover:scale-105 transition-all duration-200 text-lg"
         >
           Cerrar Sesión
         </button>
       </div>
+
+
+      {/* Modal para Configurar PIN */}
+      {mostrarPinModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="relative">
+            <PinManageForm
+              correo={correoUsuario!}
+              onPinConfigurado={() => {
+                setMostrarPinModal(false);
+                setMensaje({ text: "PIN configurado exitosamente", type: "success" });
+              }}
+              onClose={() => setMostrarPinModal(false)}
+            />
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

@@ -88,12 +88,32 @@ export default function RegistroForm() {
         </p>
       )}
 
+
+      <div className="mt-6 text-center space-y-2">
+        <p className="text-sm text-gray-600">
+          ¿Ya tienes cuenta?{" "}
+          <a href="/login" className="text-rose-600 font-semibold hover:underline">
+            Iniciar sesión
+          </a>
+        </p>
+        <div className="flex justify-center space-x-3 text-xs">
+          <a href="/login/login-temporal" className="text-rose-500 hover:underline">
+            Con enlace temporal
+          </a>
+          <span className="text-gray-400">·</span>
+          <a href="/login/pin" className="text-rose-500 hover:underline">
+            Con PIN
+          </a>
+        </div>
+      </div>
+
       <p className="mt-6 text-center text-sm text-gray-600">
         ¿Ya tienes cuenta?{" "}
         <a href="/login" className="text-rose-600 font-semibold hover:underline">
           Iniciar sesión
         </a>
       </p>
+
     </div>
   );
 }

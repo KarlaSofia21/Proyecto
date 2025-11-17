@@ -32,5 +32,9 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
+<<<<<<< HEAD
+  "exclude": ["../node_modules"]
+=======
   "exclude": ["node_modules"]
+>>>>>>> 6d99e2540a210de8b2276fa56b449a4a2a6fb8c9
 }
