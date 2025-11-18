@@ -10,16 +10,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: 'Token requerido' }, { status: 400 });
     }
 
-    // app/api/validar-enlace/route.ts
-const result = await pool.query(
-  `SELECT et.*, u.correo 
-   FROM enlaces_temporales et
-   JOIN usuarios u ON et.usuario_id = u.id
-   WHERE et.token = $1
-     AND et.usado = FALSE
-     AND et.expiracion > NOW() AT TIME ZONE 'UTC'`,
-  [token]
-);
+    // Buscar solo tokens de login (no de reset)
+    const result = await pool.query(
+      `SELECT et.*, u.correo 
+       FROM enlaces_temporales et
+       JOIN usuarios u ON et.usuario_id = u.id
+       WHERE et.token = $1
+         AND et.usado = FALSE
+         AND et.expiracion > NOW() AT TIME ZONE 'UTC'
+         AND (et.tipo IS NULL OR et.tipo != 'reset')`,
+      [token]
+    );
 
     if (result.rows.length === 0) {
       return NextResponse.json({ success: false, message: 'Enlace inválido o expirado' }, { status: 400 });
